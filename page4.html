@@ -53,9 +53,11 @@
         var image;
         var openList = "<li id='photo'>";
         var closeList = "</li>";
-        for (var i=0; i<6; i++){
+        for (var i=0; i<10; i++){
             fileNames.push("winterland"+(i+1));
+            // fileNames.push("abc"+(i+1));
             photos.push("<img src='Images/"+fileNames[i]+".jpg'>");
+            // photos.push("<img src='Images/"+fileNames[i]+".jpeg'>");
             image = openList + photos[i] + closeList;
             imageList.push(image);
         }
