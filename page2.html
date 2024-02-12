@@ -5,6 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Second Web Page</title>
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#btn").click(function (event) {
+          // Use AJAX to fetch data from data.json
+          $.ajax({
+            url: "data.json",
+            dataType: "json",
+            success: function (data) {
+              // Update the content of the table with the data from JSON
+              updateTable(data);
+            },
+            error: function () {
+              alert("Error loading data");
+            },
+          });
+        });
+
+        // Function to update the table with data
+        function updateTable(data) {
+          var table = "<tr><th>" + data.heading + "</th>";
+          table += "<th>" + data.head1 + "</th>";
+          table += "<th>" + data.head2 + "</th>";
+          table += "<th>" + data.head3 + "</th>";
+          table += "<th>" + data.head4 + "</th></tr>";
+
+          table += "<tr><td>" + data.subheadcal + "</td>";
+          table += "<td>" + data.cal1 + "</td>";
+          table += "<td>" + data.cal2 + "</td>";
+          table += "<td>" + data.cal3 + "</td>";
+          table += "<td>" + data.cal4 + "</td></tr>";
+
+          table += "<tr><td>" + data.subheadfat + "</td>";
+          table += "<td>" + data.fat1 + "</td>";
+          table += "<td>" + data.fat2 + "</td>";
+          table += "<td>" + data.fat3 + "</td>";
+          table += "<td>" + data.fat4 + "</td></tr>";
+
+          table += "<tr><td>" + data.subheadven + "</td>";
+          table += "<td>" + data.ven1 + "</td>";
+          table += "<td>" + data.ven2 + "</td>";
+          table += "<td>" + data.ven3 + "</td>";
+          table += "<td>" + data.ven4 + "</td></tr>";
+
+          // Update the table content
+          $("table").html(table);
+        }
+      });
+    </script>
+
   </head>
   <body>
     <!-- container to wrap the content -->
@@ -31,7 +82,7 @@
         <p>My Second Paragraph</p>
 
         <table>
-            <caption>Calories Comparison of popular Burgers</caption>
+            <!-- <caption>Calories Comparison of popular Burgers</caption>
             <thead>
                 <tr>
                     <th>Type</th>
@@ -65,8 +116,14 @@
                     <td>Wendys</td>
                     <td>Whataburger</td>
                 </tr>
-            </tfoot>
+            </tfoot> -->
         </table>
+        <input
+          type="button"
+          id="btn"
+          value="Load Data"
+          style="margin-top: 20px"
+        />
       </main>
       <!-- End of Main Content -->
 
